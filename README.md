@@ -1,5 +1,3 @@
-Sure! Here's a mini project idea specifically focused on React Router:
-
 Project: Recipe Finder
 
 Description:
