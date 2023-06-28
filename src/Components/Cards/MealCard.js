@@ -2,6 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import FavButton from "../Buttons/FavButton";
 
 export default function MealCard({
   idMeal,
@@ -23,10 +24,20 @@ export default function MealCard({
         <Card.Text>{ingredientString}</Card.Text>
       </Card.Body>
 
-      <Card.Body>
+      <Card.Body className="d-flex justify-content-between">
         <Button variant="dark" onClick={() => handleDetailsButton(idMeal)}>
           DETAILS
         </Button>
+        <FavButton
+          meal={{
+            idMeal,
+            strMealThumb,
+            strMeal,
+            ingredientString,
+            strCategory,
+            strArea,
+          }}
+        />
       </Card.Body>
     </Card>
   );

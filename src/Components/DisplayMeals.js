@@ -8,7 +8,7 @@ export default function DisplayMeals({ meals }) {
      return (
           <Container>
            
-            <div className="d-flex justify-content-between flex-wrap">
+            <div className="d-flex justify-content-evenly flex-wrap">
               {meals ? (
                 meals.map((meal) => {
                   const ingredients = [];
