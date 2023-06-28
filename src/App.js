@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Home from "./Pages/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SearchResult from "./Pages/SearchResult";
+import NavBar from "./Layouts/Navbar";
+import React, { createContext,useState } from "react";
+import Categories from "./Pages/Categories";
+import DisplayMeals from "./Components/DisplayMeals";
+import MealDetails from "./Components/MealDetails";
+export const Store = createContext();
 function App() {
+  const [value, setValue] = useState();
+  const updateValue = (x) => setValue(x);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   
+      <Store.Provider value={{ value, updateValue }}>
+        <BrowserRouter>
+        <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/search" element={<SearchResult />} />
+            <Route path="/meals" element={<DisplayMeals meals={value} />} />
+            <Route path="/meals/:id" element={<MealDetails />} />
+            <Route path="/categories" element={<Categories />} />
+          </Routes>
+       
+        </BrowserRouter>
+      </Store.Provider>
+  
   );
 }
 
